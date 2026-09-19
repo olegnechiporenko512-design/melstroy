@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import {
   BadgeCheck,
@@ -24,11 +24,14 @@ import {
   STEPS,
   TRUST,
 } from "@/lib/product";
-import { scrollToOrder } from "@/lib/order-store";
+import { captureAttribution, scrollToOrder } from "@/lib/order-store";
 import { cn } from "@/lib/utils";
 
 export function LandingPage() {
   const left = useMemo(() => remainingSetsToday(), []);
+  useEffect(() => {
+    captureAttribution();
+  }, []);
 
   return (
     <div className="relative min-h-dvh bg-bg text-fg">

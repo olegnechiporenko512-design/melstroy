@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PACKS, type PackId } from "@/lib/product";
-import { captureSource, useOrder } from "@/lib/order-store";
+import { captureAttribution, useOrder } from "@/lib/order-store";
 import { formatUaPhone, isValidUaPhone } from "@/lib/phone";
 import { submitLead } from "@/lib/submit-lead";
 import { cn } from "@/lib/utils";
@@ -62,12 +62,10 @@ export function OrderForm({ id = "order", compact = false }: Props) {
     setError(null);
     try {
       await submitLead({
-        data: {
-          name,
-          phone,
-          pack,
-          source: captureSource(),
-        },
+        name,
+        phone,
+        pack,
+        ...captureAttribution(),
       });
       window.fbq?.("track", "Lead");
       setStatus("success");

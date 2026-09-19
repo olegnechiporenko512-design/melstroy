@@ -29,26 +29,43 @@ export function scrollToOrder() {
   window.setTimeout(() => name?.focus(), 400);
 }
 
-export function captureSource(): string {
-  if (typeof window === "undefined") return "";
-  const key = "welstroy-source";
-  const existing = sessionStorage.getItem(key);
-  if (existing) return existing;
+const ATTR_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "fbclid",
+] as const;
+
+export type LeadAttribution = Partial<Record<(typeof ATTR_KEYS)[number], string>>;
+
+const ATTR_STORAGE = "welstroy-source";
+
+export function captureAttribution(): LeadAttribution {
+  if (typeof window === "undefined") return {};
+  const existing = sessionStorage.getItem(ATTR_STORAGE);
+  if (existing) {
+    try {
+      return JSON.parse(existing) as LeadAttribution;
+    } catch {
+      /* first-touch rewrite below */
+    }
+  }
   const params = new URLSearchParams(window.location.search);
-  const bits = [
-    "utm_source",
-    "utm_medium",
-    "utm_campaign",
-    "utm_content",
-    "utm_term",
-    "fbclid",
-  ]
-    .map((k) => {
-      const v = params.get(k);
-      return v ? `${k}=${v}` : "";
-    })
+  const attr: LeadAttribution = {};
+  for (const key of ATTR_KEYS) {
+    const value = params.get(key)?.trim();
+    if (value) attr[key] = value.slice(0, 500);
+  }
+  sessionStorage.setItem(ATTR_STORAGE, JSON.stringify(attr));
+  return attr;
+}
+
+/** @deprecated use captureAttribution */
+export function captureSource(): string {
+  const attr = captureAttribution();
+  return ATTR_KEYS.map((key) => (attr[key] ? `${key}=${attr[key]}` : ""))
     .filter(Boolean)
     .join("&");
-  sessionStorage.setItem(key, bits);
-  return bits;
 }

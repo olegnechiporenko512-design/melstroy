@@ -237,9 +237,8 @@
 
   <script>
     /* Вставте ID пікселя з Facebook Events Manager — лише цифри */
-    const META_PIXEL_ID = "";
-    /* URL веб-додатку Google Apps Script, якщо таблицю вже підключили */
-    const LEADS_WEBHOOK_URL = "";
+    const META_PIXEL_ID = "1654932402424423";
+    const LEAD_API = "https://www.top-vibir.store/api/lead";
 
     if (META_PIXEL_ID) {
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -329,14 +328,19 @@
       document.getElementById("nameErr").textContent = name.length < 2 ? "Вкажіть імʼя" : "";
       document.getElementById("phoneErr").textContent = okPhone ? "" : "Номер у форматі +380 XX XXX XX XX";
       if (name.length < 2 || !okPhone) return;
+      const q = new URLSearchParams(location.search);
       const payload = {
         name, phone: "+380"+national(phone.value), pack,
-        price: pack==="promo"?1780:890, source: location.search.slice(1), createdAt: new Date().toISOString()
+        utm_source: q.get("utm_source") || "",
+        utm_medium: q.get("utm_medium") || "",
+        utm_campaign: q.get("utm_campaign") || "",
+        utm_content: q.get("utm_content") || "",
+        utm_term: q.get("utm_term") || "",
+        fbclid: q.get("fbclid") || ""
       };
       try {
-        if (LEADS_WEBHOOK_URL) {
-          await fetch(LEADS_WEBHOOK_URL, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload), mode:"no-cors" });
-        }
+        const res = await fetch(LEAD_API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
+        if (!res.ok) throw new Error("lead");
         if (window.fbq) fbq("track", "Lead");
         document.getElementById("order").innerHTML = "<h3 style='font-family:var(--display);font-size:1.6rem;margin:0 0 .5rem'>Заявку прийнято</h3><p class='muted'>Оператор зателефонує протягом 15 хвилин. Нова Пошта, оплата при отриманні.</p>";
         document.getElementById("sticky").style.display = "none";
