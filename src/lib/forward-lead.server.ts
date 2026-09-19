@@ -30,9 +30,9 @@ function clip(value: unknown, max = 500): string {
 
 export function webhookUrl(): string {
   return (
+    env("GOOGLE_SCRIPT_URL") ||
     env("LEADS_WEBHOOK_URL") ||
     env("APPS_SCRIPT_URL") ||
-    env("GOOGLE_SCRIPT_URL") ||
     env("GAS_EXEC_URL") ||
     ""
   );
@@ -82,7 +82,7 @@ export async function postToSheet(payload: Record<string, string | number>) {
     if (process.env.VERCEL) {
       throw new Error("missing-webhook");
     }
-    console.warn("[lead] LEADS_WEBHOOK_URL is empty — preview accept");
+    console.warn("[lead] GOOGLE_SCRIPT_URL is empty — preview accept");
     return { success: true, preview: true };
   }
 
