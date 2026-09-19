@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welstroy Energy — паста для потенції</title>
+  <meta name="description" content="Welstroy Energy — паста для потенції на натуральному меду. 15 трав, 150 г, курс 30 днів. Акція 1+1=3. Нова Пошта, оплата при отриманні." />
+  <meta name="theme-color" content="#120c09" />
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120c09; --surface: #1e1510; --fg: #f4ead8; --muted: #b9a48c;
+      --subtle: #8a7360; --primary: #d4a257; --primary-fg: #1a1008;
+      --honey: #e8c47a; --accent: #b4232c; --accent-fg: #f6ece0;
+      --border: rgba(244,234,216,.14); --display: "Cormorant Garamond", "Times New Roman", serif;
+      --sans: Manrope, system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); }
+    img { max-width: 100%; display: block; }
+    button { font: inherit; cursor: pointer; }
+    h1, h2, h3 { font-family: var(--display); text-wrap: balance; font-weight: 600; }
+    a { color: var(--primary); }
+    .wrap { max-width: 72rem; margin: 0 auto; padding: 0 1rem; }
+    .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--primary); }
+    .muted { color: var(--muted); }
+    .subtle { color: var(--subtle); font-size: .75rem; }
+    header {
+      position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between;
+      height: 3.5rem; padding: 0 1rem; background: rgba(18,12,9,.88); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    header .brand { font-family: var(--display); letter-spacing: .18em; text-transform: uppercase; }
+    .badge { background: var(--accent); color: var(--accent-fg); border-radius: 999px; padding: .25rem .7rem; font-size: .7rem; font-weight: 700; letter-spacing: .12em; }
+    .hero-img { height: 16rem; position: relative; overflow: hidden; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
+    .hero-img:after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, var(--bg), transparent 55%); }
+    .hero-copy { position: relative; margin-top: -3.5rem; padding: 0 1rem 6rem; }
+    h1 { font-size: 2.25rem; line-height: 1.05; margin: .75rem 0 .5rem; }
+    h1 span { display: block; color: var(--primary); }
+    .chip { display: inline-flex; gap: .5rem; align-items: center; background: rgba(180,35,44,.15); color: var(--honey); border-radius: 999px; padding: .25rem .75rem; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .card { background: var(--surface); border-radius: 1rem; padding: 1rem; box-shadow: 0 0 0 1px var(--border); }
+    .pack { display: flex; gap: .75rem; align-items: center; padding: .7rem .75rem; border-radius: .75rem; margin-top: .5rem; background: rgba(18,12,9,.5); box-shadow: inset 0 0 0 1px var(--border); cursor: pointer; }
+    .pack.on { background: rgba(212,162,87,.12); box-shadow: inset 0 0 0 1px var(--primary); }
+    .dot { width: 1rem; height: 1rem; border-radius: 50%; box-shadow: inset 0 0 0 1px var(--muted); flex-shrink: 0; }
+    .pack.on .dot { background: var(--primary); box-shadow: none; }
+    label { display: block; font-size: .72rem; color: var(--muted); margin: .75rem 0 .35rem; }
+    input { width: 100%; height: 3rem; border: 0; border-radius: .5rem; background: var(--bg); color: var(--fg); padding: 0 1rem; font-size: 1rem; box-shadow: inset 0 0 0 1px var(--border); }
+    .cta {
+      width: 100%; min-height: 3rem; margin-top: 1rem; border: 0; border-radius: .5rem;
+      background: var(--primary); color: var(--primary-fg); font-weight: 700; font-size: .95rem;
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; }
+    .trust { border-block: 1px solid var(--border); background: var(--surface); }
+    .trust div { padding: 1rem; }
+    .trust div:nth-child(odd) { border-right: 1px solid var(--border); }
+    .trust div:nth-child(n+3) { border-top: 1px solid var(--border); }
+    section { padding: 3.5rem 1rem; }
+    h2 { font-size: 2rem; line-height: 1.1; margin: .6rem 0 1rem; }
+    .pains { display: grid; gap: .75rem; }
+    .ing { display: grid; gap: 1px; background: var(--border); border-radius: 1rem; overflow: hidden; }
+    .ing button { width: 100%; text-align: left; background: var(--surface); color: var(--fg); border: 0; padding: .9rem 1rem; }
+    .ing p { margin: .4rem 0 0; font-size: .875rem; color: var(--muted); display: none; }
+    .ing button.open p { display: block; }
+    .role { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--subtle); margin-left: .4rem; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border-radius: 1rem; overflow: hidden; margin-top: 1.5rem; }
+    .stats div { background: var(--bg); padding: 1rem; }
+    .stats dd { font-family: var(--display); font-size: 1.75rem; margin: .2rem 0 0; }
+    .reviews { display: flex; gap: .75rem; overflow-x: auto; padding-bottom: .5rem; }
+    .reviews article { min-width: 80vw; background: var(--surface); border-radius: 1rem; padding: 1.1rem; box-shadow: 0 0 0 1px var(--border); }
+    .offer-row { display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; font-size: .875rem; }
+    .offer-row > * { padding: 1rem .5rem; }
+    .offer-row.mute { color: var(--muted); text-decoration: line-through; }
+    .offer-row.hot { background: rgba(212,162,87,.12); }
+    details { border-bottom: 1px solid var(--border); }
+    summary { padding: 1rem 0; font-weight: 650; cursor: pointer; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    .sticky {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; gap: .75rem; align-items: center;
+      padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: rgba(18,12,9,.92);
+      border-top: 1px solid var(--border); backdrop-filter: blur(10px);
+    }
+    .sticky .cta { width: auto; min-width: 10rem; margin: 0; padding: 0 1.2rem; }
+    footer { padding: 2.5rem 1rem 7rem; border-top: 1px solid var(--border); font-size: .75rem; color: var(--subtle); }
+    .err { color: var(--accent); font-size: .75rem; margin-top: .3rem; }
+    @media (min-width: 900px) {
+      .hero { display: grid; grid-template-columns: 1fr 1fr; }
+      .hero-img { height: auto; min-height: 36rem; }
+      .hero-copy { margin-top: 0; padding: 2.5rem 1.5rem 2.5rem 0; }
+      h1 { font-size: 3.4rem; }
+      .pains { grid-template-columns: 1fr 1fr 1fr; }
+      .reviews article { min-width: 20rem; }
+      .sticky { display: none; }
+      .hero-img:after { background: linear-gradient(to right, transparent, var(--bg)); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">Welstroy</div>
+    <div class="badge">1+1=3</div>
+    <a href="#order" class="subtle" style="text-decoration:none;font-weight:700;color:var(--primary)">Замовити</a>
+  </header>
+
+  <div class="hero">
+    <div class="hero-img"><img src="public/hero.jpg" alt="Банка Welstroy Energy — паста для потенції на меду" /></div>
+    <div class="hero-copy">
+      <p class="chip">Акція до півночі · <span id="cd">--:--:--</span></p>
+      <h1>Чоловіча сила <span>в одній ложці меду</span></h1>
+      <p class="muted">15 трав у натуральному меді. 150 г · 30 днів курсу. Акція 1+1=3 — три банки за 1780 грн.</p>
+      <p class="subtle" id="left"></p>
+      <form id="order" class="card" style="margin-top:1.2rem;max-width:28rem">
+        <p class="kicker">Замовлення</p>
+        <h3 style="margin:.3rem 0 0;font-size:1.5rem">Отримати пасту</h3>
+        <div class="pack on" data-pack="promo">
+          <span class="dot"></span>
+          <div style="flex:1">
+            <strong>Акція 1+1=3</strong> <span class="badge">Вигідно</span>
+            <div class="subtle">Три банки за ціною двох · 90 днів курсу</div>
+          </div>
+          <div style="text-align:right"><span class="subtle" style="text-decoration:line-through">2670</span><div><strong>1780 грн</strong></div></div>
+        </div>
+        <div class="pack" data-pack="one">
+          <span class="dot"></span>
+          <div style="flex:1"><strong>1 банка</strong><div class="subtle">150 г · курс на 30 днів</div></div>
+          <div><strong>890 грн</strong></div>
+        </div>
+        <label for="name">Імʼя</label>
+        <input id="name" name="name" autocomplete="name" placeholder="Як до вас звертатись" />
+        <div class="err" id="nameErr"></div>
+        <label for="phone">Телефон</label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" value="+380 " />
+        <div class="err" id="phoneErr"></div>
+        <button class="cta" id="submit" type="submit">Замовити 3 банки за 1 780 грн</button>
+        <p class="subtle" style="text-align:center;margin:.7rem 0 0">Нова Пошта · оплата при отриманні · без передоплати</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="trust grid2">
+    <div><strong>Оплата на пошті</strong><div class="subtle">Спочатку дивитесь, потім платите</div></div>
+    <div><strong>Нова Пошта 1–3 дні</strong><div class="subtle">По всій Україні</div></div>
+    <div><strong>150 г / 30 днів</strong><div class="subtle">Одна ложка на день</div></div>
+    <div><strong>15 трав у меді</strong><div class="subtle">Без капсул і барвників</div></div>
+  </div>
+
+  <section class="wrap">
+    <p class="kicker">Знайомо</p>
+    <h2>Не вік зраджує. Зраджує запас сил.</h2>
+    <div class="pains">
+      <article class="card"><h3>Сили тануть після 35</h3><p class="muted">Ранок важкий, вечір порожній. Тіло ніби на нейтральній передачі — навіть коли голова ще хоче.</p></article>
+      <article class="card"><h3>Бажання є, відгуку немає</h3><p class="muted">Не про «настрій». Про те, коли тіло відповідає слабше, ніж ти пам’ятаєш себе.</p></article>
+      <article class="card"><h3>Таблетка — і зрив</h3><p class="muted">Хімія б’є точково і відпускає. Хочеться опори на кожен день, а не рулетку на одну ніч.</p></article>
+    </div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;border-block:1px solid var(--border)">
+    <img src="public/honey.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.25" />
+    <div style="position:absolute;inset:0;background:rgba(18,12,9,.8)"></div>
+    <div class="wrap" style="position:relative">
+      <p class="kicker">Як це працює</p>
+      <h2>Не пігулка на ніч. Опора на кожен день.</h2>
+      <p class="muted">Мед тримає екстракти в густій матриці. Одна ложка — і трави йдуть курсом: тонус, кровообіг, бажання, витривалість.</p>
+      <p><strong>01</strong> · 1 чайна ложка на день, за 30 хвилин до їжі.</p>
+      <p><strong>02</strong> · Щодня, 30 днів. Трави працюють курсом.</p>
+      <p><strong>03</strong> · Три банки = 90 днів без перерви.</p>
+      <img src="public/paste.jpg" alt="Густа медова паста" style="border-radius:1rem;margin-top:1.5rem;aspect-ratio:1;object-fit:cover;max-width:28rem" />
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="kicker">Склад</p>
+    <h2>П’ятнадцять трав. Одна ложка.</h2>
+    <p class="muted">Основа — натуральний мед. Натисніть рядок — відкриється роль у формулі.</p>
+    <div class="ing" id="ing"></div>
+    <img src="public/ingredients.jpg" alt="Склад: мака, кориця, гранат" style="border-radius:1rem;margin-top:1.5rem" />
+  </section>
+
+  <section style="background:var(--surface);border-block:1px solid var(--border)">
+    <div class="wrap">
+      <p class="kicker">150 грамів</p>
+      <h2>Банка на 30 днів. Набір — на сезон.</h2>
+      <p class="muted">Одна чайна ложка ≈ денна порція. 150 г вистачає приблизно на 30 прийомів. Три банки за акцією — 90 днів.</p>
+      <dl class="stats">
+        <div><dt class="subtle">ВАГА</dt><dd>150 г</dd></div>
+        <div><dt class="subtle">ПОРЦІЯ</dt><dd>1 ч. л.</dd></div>
+        <div><dt class="subtle">КУРС</dt><dd>30 днів</dd></div>
+        <div><dt class="subtle">АКЦІЯ</dt><dd>90 днів</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <p class="kicker">Відгуки</p>
+    <h2>Чоловіки, які вже відкрили банку.</h2>
+    <div class="reviews" id="reviews"></div>
+  </section>
+
+  <section style="position:relative;overflow:hidden;border-block:1px solid var(--border)">
+    <img src="public/pomegranate.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2" />
+    <div style="position:absolute;inset:0;background:rgba(18,12,9,.82)"></div>
+    <div class="wrap" style="position:relative;max-width:40rem">
+      <p class="kicker" style="text-align:center">Акція 1+1=3</p>
+      <h2 style="text-align:center">Платите за дві. Забираєте три.</h2>
+      <p class="muted" style="text-align:center">Третя банка в подарунок. 90 днів курсу за ціною 60.</p>
+      <div class="card" style="padding:0;overflow:hidden;margin-top:1.5rem">
+        <div class="offer-row subtle" style="border-bottom:1px solid var(--border);letter-spacing:.12em;font-size:.7rem;text-transform:uppercase"><div>Набір</div><div>Дні</div><div>Ціна</div></div>
+        <div class="offer-row"><div>1 банка</div><div>30</div><div><strong>890 грн</strong></div></div>
+        <div class="offer-row mute"><div>3 банки</div><div>90</div><div>2 670 грн</div></div>
+        <div class="offer-row hot"><div>Акція 1+1=3</div><div>90</div><div><strong>1 780 грн</strong></div></div>
+      </div>
+      <p style="text-align:center;margin-top:1.2rem"><a class="cta" href="#order" style="display:inline-flex;align-items:center;justify-content:center;width:auto;padding:0 1.5rem;text-decoration:none">Забрати акційний набір</a></p>
+    </div>
+  </section>
+
+  <section class="wrap" style="max-width:40rem">
+    <p class="kicker">Питання</p>
+    <h2>Коротко, без води.</h2>
+    <div id="faq"></div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="brand" style="font-family:var(--display);letter-spacing:.18em;text-transform:uppercase;color:var(--fg)">Welstroy Energy</div>
+      <p>Паста для потенції · 150 г · Herbal Libido Paste</p>
+      <p>Welstroy Energy є харчовим продуктом і не є лікарським засобом. Не призначений для діагностики, лікування чи профілактики захворювань. Результат індивідуальний. При алергії на продукти бджільництва — не вживати. 18+.</p>
+    </div>
+  </footer>
+
+  <div class="sticky" id="sticky">
+    <div style="flex:1"><div class="kicker">1+1=3</div><strong id="stickyPrice">1780 грн</strong></div>
+    <a class="cta" href="#order">Замовити</a>
+  </div>
+
+  <script>
+    /* Вставте ID пікселя з Facebook Events Manager — лише цифри */
+    const META_PIXEL_ID = "";
+    /* URL веб-додатку Google Apps Script, якщо таблицю вже підключили */
+    const LEADS_WEBHOOK_URL = "";
+
+    if (META_PIXEL_ID) {
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', META_PIXEL_ID);
+      fbq('track', 'PageView');
+    }
+
+    const ings = [
+      ["Натуральний мед","Основа","Густа медова основа несе трави і дає природну енергію."],
+      ["Мака перуанська","Витривалість","Андський корінь для сили, витривалості і бажання."],
+      ["Трибулус","Тонус","Класика чоловічого тонусу."],
+      ["Кордицепс","Енергія","Гриб витривалості без кавового зриву."],
+      ["Епімедіум","Бажання","Традиційна рослина чоловічого вогню."],
+      ["Елеутерокок","Адаптація","Сибірський адаптаген при недосипі й стресі."],
+      ["Родіола рожева","Стійкість","Золотий корінь проти виснаження."],
+      ["Катуаба","Лібідо","Бразильська кора для чоловічого бажання."],
+      ["Муїра пуама","Потужність","«Дерево потужності» Амазонії."],
+      ["Гранат","Кровообіг","Підтримка мікроциркуляції."],
+      ["Імбир","Тепло","Розігріває формулу і травлення."],
+      ["Цейлонська кориця","Баланс","Справжня кориця, не каса."],
+      ["Пилок сосни","Чоловічий профіль","Рослинний комплекс для тонусу."],
+      ["Бджолиний пилок","Живлення","Амінокислоти і мікроелементи."],
+      ["Корінь солодки","Зв’язка","Збирає формулу докупи."]
+    ];
+    document.getElementById("ing").innerHTML = ings.map((x,i)=>`<button type="button" class="${i===0?"open":""}"><strong>${x[0]}</strong><span class="role">${x[1]}</span><p>${x[2]}</p></button>`).join("");
+    document.getElementById("ing").onclick = (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      document.querySelectorAll("#ing button").forEach(x=>x.classList.remove("open"));
+      b.classList.add("open");
+    };
+
+    const revs = [
+      ["Андрій, 41","Київ","Брав через скепсис. На другому тижні перестав провалюватися після 18:00. Смак як густий гречаний мед із прянощами."],
+      ["Віктор, 38","Львів","Не збудження з банки, а ніби тіло знову в грі. Банки вистачило рівно на місяць."],
+      ["Олег, 45","Дніпро","Капсули шлунок не любив. Пасту їм із чаєм. Оплата на пошті — відкрив, понюхав, тоді карта."],
+      ["Сергій, 36","Одеса","Замовив акцію одразу. Ранок інший, і в ліжку теж."],
+      ["Ігор, 52","Харків","Десь на 10–12-й день з’явилась та сама впевненість. Кориця і гранат чути."]
+    ];
+    document.getElementById("reviews").innerHTML = revs.map(r=>`<article><div style="display:flex;justify-content:space-between"><strong>${r[0]}</strong><span class="subtle">${r[1]}</span></div><p class="muted">${r[2]}</p></article>`).join("");
+
+    const faqs = [
+      ["Це ліки від імпотенції?","Ні. Welstroy Energy — харчовий продукт на меду з рослинними екстрактами. Не є лікарським засобом."],
+      ["На скільки вистачає банки 150 г?","Одна чайна ложка на день — близько 30 прийомів. Акція 1+1=3 — три банки, близько 90 днів."],
+      ["Як приймати?","1 чайна ложка на день, бажано за 30 хвилин до їжі. Не заварювати окропом."],
+      ["Як працює акція 1+1=3?","Оплачуєте дві банки (1780 грн) — отримуєте три. Третя в подарунок."],
+      ["Доставка і оплата?","Нова Пошта по Україні. Оплата при отриманні, 1–3 дні."],
+      ["Кому не варто?","При алергії на мед і пилок, дітям. За хронічних станів — спитайте лікаря. 18+."]
+    ];
+    document.getElementById("faq").innerHTML = faqs.map(f=>`<details><summary>${f[0]}</summary><p class="muted" style="padding:0 0 1rem">${f[1]}</p></details>`).join("");
+
+    function kyivRemain() {
+      const parts = new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Kyiv",hour:"2-digit",minute:"2-digit",second:"2-digit",hourCycle:"h23"}).formatToParts(new Date());
+      const pick = t => Number(parts.find(p=>p.type===t).value);
+      const left = 86400 - (pick("hour")*3600 + pick("minute")*60 + pick("second"));
+      const p = n => String(n).padStart(2,"0");
+      return p(Math.floor(left/3600))+":"+p(Math.floor(left%3600/60))+":"+p(left%60);
+    }
+    const tick = () => document.getElementById("cd").textContent = kyivRemain();
+    tick(); setInterval(tick, 1000);
+    const day = new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Kyiv"}).format(new Date());
+    let hash = 0; for (const ch of day) hash = (hash*33 + ch.charCodeAt(0)) >>> 0;
+    document.getElementById("left").textContent = "Сьогодні лишилось " + (12 + hash%8) + " акційних наборів · Нова Пошта, оплата при отриманні";
+
+    let pack = "promo";
+    document.querySelectorAll(".pack").forEach(el => {
+      el.onclick = () => {
+        pack = el.dataset.pack;
+        document.querySelectorAll(".pack").forEach(x => x.classList.toggle("on", x===el));
+        document.getElementById("submit").textContent = pack === "promo" ? "Замовити 3 банки за 1 780 грн" : "Замовити 1 банку за 890 грн";
+        document.getElementById("stickyPrice").textContent = pack === "promo" ? "1780 грн" : "890 грн";
+      };
+    });
+
+    function digits(v){ return v.replace(/\D/g,""); }
+    function national(v){ let d=digits(v); if(d.startsWith("380")) d=d.slice(3); else if(d.startsWith("0")) d=d.slice(1); return d.slice(0,9); }
+    function formatPhone(v){
+      const d = national(v); const a=d.slice(0,2),b=d.slice(2,5),c=d.slice(5,7),e=d.slice(7,9);
+      let out="+380"; if(a) out+=" "+a; if(b) out+=" "+b; if(c) out+=" "+c; if(e) out+=" "+e; return d?out:"+380 ";
+    }
+    const phone = document.getElementById("phone");
+    phone.addEventListener("input", () => { phone.value = formatPhone(phone.value); });
+
+    document.getElementById("order").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const okPhone = national(phone.value).length === 9;
+      document.getElementById("nameErr").textContent = name.length < 2 ? "Вкажіть імʼя" : "";
+      document.getElementById("phoneErr").textContent = okPhone ? "" : "Номер у форматі +380 XX XXX XX XX";
+      if (name.length < 2 || !okPhone) return;
+      const payload = {
+        name, phone: "+380"+national(phone.value), pack,
+        price: pack==="promo"?1780:890, source: location.search.slice(1), createdAt: new Date().toISOString()
+      };
+      try {
+        if (LEADS_WEBHOOK_URL) {
+          await fetch(LEADS_WEBHOOK_URL, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload), mode:"no-cors" });
+        }
+        if (window.fbq) fbq("track", "Lead");
+        document.getElementById("order").innerHTML = "<h3 style='font-family:var(--display);font-size:1.6rem;margin:0 0 .5rem'>Заявку прийнято</h3><p class='muted'>Оператор зателефонує протягом 15 хвилин. Нова Пошта, оплата при отриманні.</p>";
+        document.getElementById("sticky").style.display = "none";
+      } catch (err) {
+        document.getElementById("phoneErr").textContent = "Не вдалося надіслати. Спробуйте ще раз.";
+      }
+    });
+  </script>
+</body>
+</html>
