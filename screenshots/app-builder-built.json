@@ -1,0 +1,41 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Welstroy Energy",
+      "hasCanvas": false,
+      "bodyTextLen": 6425,
+      "bodyTextHash": "e0d0dfa19ab87f9e39da48c8c538e1ee0206abacae681cead89b8e2c5ea60d90",
+      "bodyTextPrefix": "WELSTROY 1+1=3 Замовити АКЦІЯ ДО ПІВНОЧІ · --:--:-- Чоловіча сил",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Welstroy Energy",
+      "hasCanvas": false,
+      "bodyTextLen": 6444,
+      "bodyTextHash": "1b2b7daf53d9b795134cbe34b187b5f2a81171f9ec6d073b02db6d3bc5c57e4c",
+      "bodyTextPrefix": "WELSTROY 1+1=3 АКЦІЯ ДО ПІВНОЧІ · --:--:-- Чоловіча сила в одній",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": true,
+  "baselineReasons": [
+    "desktop: body text replaced (similar length, page start changed)",
+    "mobile: body text replaced (similar length, page start changed)"
+  ]
+}
