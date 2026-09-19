@@ -1,6 +1,7 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
+import { MetaPixel } from "@/components/meta-pixel";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Welstroy Energy";
@@ -47,6 +48,7 @@ function RootDocument() {
       </head>
       <body>
         <PreviewHostBridge />
+        <MetaPixel />
         <AuthProvider>
           <Outlet />
         </AuthProvider>
