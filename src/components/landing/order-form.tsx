@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PACKS, type PackId } from "@/lib/product";
 import { captureAttribution, useOrder } from "@/lib/order-store";
-import { formatUaPhone, isValidUaPhone } from "@/lib/phone";
+import { formatUaPhone, isValidUaPhone, toE164 } from "@/lib/phone";
 import { submitLead } from "@/lib/submit-lead";
 import { cn } from "@/lib/utils";
 
@@ -68,6 +68,7 @@ export function OrderForm({ id = "order", compact = false }: Props) {
         ...captureAttribution(),
       });
       window.fbq?.("track", "Lead");
+      window.ttq?.identify?.({ phone_number: toE164(phone) });
       window.ttq?.track("SubmitForm");
       setStatus("success");
     } catch {
@@ -220,6 +221,9 @@ export function OrderForm({ id = "order", compact = false }: Props) {
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
-    ttq?: { track: (event: string, payload?: Record<string, unknown>) => void };
+    ttq?: {
+      identify?: (payload: Record<string, string>) => void;
+      track: (event: string, payload?: Record<string, unknown>) => void;
+    };
   }
 }

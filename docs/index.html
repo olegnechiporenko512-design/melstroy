@@ -343,6 +343,10 @@
         const res = await fetch(LEAD_API, { method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify(payload) });
         if (!res.ok) throw new Error("lead");
         if (window.fbq) fbq("track", "Lead");
+        if (window.ttq) {
+          ttq.identify({ phone_number: "+380" + national(phone.value) });
+          ttq.track("SubmitForm");
+        }
         document.getElementById("order").innerHTML = "<h3 style='font-family:var(--display);font-size:1.6rem;margin:0 0 .5rem'>Заявку прийнято</h3><p class='muted'>Оператор зателефонує протягом 15 хвилин. Нова Пошта, оплата при отриманні.</p>";
         document.getElementById("sticky").style.display = "none";
       } catch (err) {
