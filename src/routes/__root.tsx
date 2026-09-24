@@ -43,6 +43,9 @@ export const Route = createRootRoute({
       { rel: "manifest", href: "/__grok/manifest.webmanifest" },
       { rel: "apple-touch-icon", href: "/__grok/icon-180.png" },
     ],
+    scripts: [
+      { src: "/_vercel/insights/script.js", defer: true },
+    ],
   }),
   component: RootDocument,
 });
@@ -52,6 +55,7 @@ function RootDocument() {
     <html lang="uk" className="antialiased" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script defer src="/_vercel/insights/script.js" />
       </head>
       <body>
         <PreviewHostBridge />
