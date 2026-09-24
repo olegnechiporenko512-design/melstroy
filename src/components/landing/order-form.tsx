@@ -68,6 +68,7 @@ export function OrderForm({ id = "order", compact = false }: Props) {
         ...captureAttribution(),
       });
       window.fbq?.("track", "Lead");
+      window.ttq?.track("SubmitForm");
       setStatus("success");
     } catch {
       setStatus("error");
@@ -219,5 +220,6 @@ export function OrderForm({ id = "order", compact = false }: Props) {
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
+    ttq?: { track: (event: string, payload?: Record<string, unknown>) => void };
   }
 }

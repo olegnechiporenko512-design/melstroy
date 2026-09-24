@@ -271,7 +271,7 @@ function Course() {
     <section className="border-y border-border bg-surface">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:py-20 lg:grid-cols-2 lg:items-center">
         <div>
-          <p className="text-xs font-semibold tracking-caps text-primary uppercase">150 грамів</p>
+          <p className="text-xs font-semibold tracking-caps text-primary uppercase">200 грамів</p>
           <h2 className="font-display mt-3 text-4xl leading-tight text-fg sm:text-5xl">
             Банка на 30 днів. Набір — на сезон.
           </h2>
@@ -280,7 +280,7 @@ function Course() {
             {PRODUCT.courseDays} прийомів. Три банки за акцією — це 90 днів без «завтра замовлю ще».
           </p>
           <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-border">
-            <Stat k="Вага" v="150 г" />
+            <Stat k="Вага" v="200 г" />
             <Stat k="Порція" v="1 ч. л." />
             <Stat k="Курс" v="30 днів" />
             <Stat k="Акція" v="90 днів" />
