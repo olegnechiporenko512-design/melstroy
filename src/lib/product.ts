@@ -25,17 +25,6 @@ export const PACKS: Record<
     featured: boolean;
   }
 > = {
-  promo: {
-    id: "promo",
-    title: "Акція 1+1=3",
-    subtitle: "Три банки за ціною двох · 90 днів курсу",
-    jars: 3,
-    days: 90,
-    price: 1198,
-    oldPrice: 1797,
-    badge: "Вигідно",
-    featured: true,
-  },
   one: {
     id: "one",
     title: "1 банка",
@@ -46,6 +35,17 @@ export const PACKS: Record<
     oldPrice: null,
     badge: null,
     featured: false,
+  },
+  promo: {
+    id: "promo",
+    title: "Акція 1+1=3",
+    subtitle: "Три банки за ціною двох · 90 днів курсу",
+    jars: 3,
+    days: 90,
+    price: 1198,
+    oldPrice: 1797,
+    badge: "Вигідно",
+    featured: true,
   },
 };
 
@@ -242,7 +242,7 @@ export const FAQ = [
   },
   {
     q: "Як працює акція 1+1=3?",
-    a: "Оплачуєте дві банки (1198 грн) — отримуєте три. Третя в подарунок. Ціна однієї банки без акції — 599 грн.",
+    a: "Оплачуєте дві банки (1 198 грн) — отримуєте три. Третя в подарунок. Ціна однієї банки без акції — 599 грн.",
   },
   {
     q: "Доставка і оплата?",

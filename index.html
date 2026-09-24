@@ -110,23 +110,23 @@
     <div class="hero-copy">
       <p class="chip">Акція до півночі · <span id="cd">--:--:--</span></p>
       <h1>Чоловіча сила <span>в одній ложці меду</span></h1>
-      <p class="muted">15 трав у натуральному меді. 150 г · 30 днів курсу. Акція 1+1=3 — три банки за 1780 грн.</p>
+      <p class="muted">15 трав у натуральному меді. 150 г · 30 днів курсу. Акція 1+1=3 — три банки за 1 198 грн.</p>
       <p class="subtle" id="left"></p>
       <form id="order" class="card" style="margin-top:1.2rem;max-width:28rem">
         <p class="kicker">Замовлення</p>
         <h3 style="margin:.3rem 0 0;font-size:1.5rem">Отримати пасту</h3>
-        <div class="pack on" data-pack="promo">
+        <div class="pack on" data-pack="one">
+          <span class="dot"></span>
+          <div style="flex:1"><strong>1 банка</strong><div class="subtle">150 г · курс на 30 днів</div></div>
+          <div><strong>599 грн</strong></div>
+        </div>
+        <div class="pack" data-pack="promo">
           <span class="dot"></span>
           <div style="flex:1">
             <strong>Акція 1+1=3</strong> <span class="badge">Вигідно</span>
             <div class="subtle">Три банки за ціною двох · 90 днів курсу</div>
           </div>
-          <div style="text-align:right"><span class="subtle" style="text-decoration:line-through">2670</span><div><strong>1780 грн</strong></div></div>
-        </div>
-        <div class="pack" data-pack="one">
-          <span class="dot"></span>
-          <div style="flex:1"><strong>1 банка</strong><div class="subtle">150 г · курс на 30 днів</div></div>
-          <div><strong>890 грн</strong></div>
+          <div style="text-align:right"><span class="subtle" style="text-decoration:line-through">1 797</span><div><strong>1 198 грн</strong></div></div>
         </div>
         <label for="name">Імʼя</label>
         <input id="name" name="name" autocomplete="name" placeholder="Як до вас звертатись" />
@@ -134,7 +134,7 @@
         <label for="phone">Телефон</label>
         <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" value="+380 " />
         <div class="err" id="phoneErr"></div>
-        <button class="cta" id="submit" type="submit">Замовити 3 банки за 1 780 грн</button>
+        <button class="cta" id="submit" type="submit">Замовити 1 банку за 599 грн</button>
         <p class="subtle" style="text-align:center;margin:.7rem 0 0">Нова Пошта · оплата при отриманні · без передоплати</p>
       </form>
     </div>
@@ -208,9 +208,9 @@
       <p class="muted" style="text-align:center">Третя банка в подарунок. 90 днів курсу за ціною 60.</p>
       <div class="card" style="padding:0;overflow:hidden;margin-top:1.5rem">
         <div class="offer-row subtle" style="border-bottom:1px solid var(--border);letter-spacing:.12em;font-size:.7rem;text-transform:uppercase"><div>Набір</div><div>Дні</div><div>Ціна</div></div>
-        <div class="offer-row"><div>1 банка</div><div>30</div><div><strong>890 грн</strong></div></div>
-        <div class="offer-row mute"><div>3 банки</div><div>90</div><div>2 670 грн</div></div>
-        <div class="offer-row hot"><div>Акція 1+1=3</div><div>90</div><div><strong>1 780 грн</strong></div></div>
+        <div class="offer-row"><div>1 банка</div><div>30</div><div><strong>599 грн</strong></div></div>
+        <div class="offer-row mute"><div>3 банки</div><div>90</div><div>1 797 грн</div></div>
+        <div class="offer-row hot"><div>Акція 1+1=3</div><div>90</div><div><strong>1 198 грн</strong></div></div>
       </div>
       <p style="text-align:center;margin-top:1.2rem"><a class="cta" href="#order" style="display:inline-flex;align-items:center;justify-content:center;width:auto;padding:0 1.5rem;text-decoration:none">Забрати акційний набір</a></p>
     </div>
@@ -231,7 +231,7 @@
   </footer>
 
   <div class="sticky" id="sticky">
-    <div style="flex:1"><div class="kicker">1+1=3</div><strong id="stickyPrice">1780 грн</strong></div>
+    <div style="flex:1"><div class="kicker" id="stickyKicker">1 банка</div><strong id="stickyPrice">599 грн</strong></div>
     <a class="cta" href="#order">Замовити</a>
   </div>
 
@@ -283,7 +283,7 @@
       ["Це ліки від імпотенції?","Ні. Welstroy Energy — харчовий продукт на меду з рослинними екстрактами. Не є лікарським засобом."],
       ["На скільки вистачає банки 150 г?","Одна чайна ложка на день — близько 30 прийомів. Акція 1+1=3 — три банки, близько 90 днів."],
       ["Як приймати?","1 чайна ложка на день, бажано за 30 хвилин до їжі. Не заварювати окропом."],
-      ["Як працює акція 1+1=3?","Оплачуєте дві банки (1780 грн) — отримуєте три. Третя в подарунок."],
+      ["Як працює акція 1+1=3?","Оплачуєте дві банки (1 198 грн) — отримуєте три. Третя в подарунок."],
       ["Доставка і оплата?","Нова Пошта по Україні. Оплата при отриманні, 1–3 дні."],
       ["Кому не варто?","При алергії на мед і пилок, дітям. За хронічних станів — спитайте лікаря. 18+."]
     ];
@@ -302,13 +302,14 @@
     let hash = 0; for (const ch of day) hash = (hash*33 + ch.charCodeAt(0)) >>> 0;
     document.getElementById("left").textContent = "Сьогодні лишилось " + (12 + hash%8) + " акційних наборів · Нова Пошта, оплата при отриманні";
 
-    let pack = "promo";
+    let pack = "one";
     document.querySelectorAll(".pack").forEach(el => {
       el.onclick = () => {
         pack = el.dataset.pack;
         document.querySelectorAll(".pack").forEach(x => x.classList.toggle("on", x===el));
-        document.getElementById("submit").textContent = pack === "promo" ? "Замовити 3 банки за 1 780 грн" : "Замовити 1 банку за 890 грн";
-        document.getElementById("stickyPrice").textContent = pack === "promo" ? "1780 грн" : "890 грн";
+        document.getElementById("submit").textContent = pack === "promo" ? "Замовити 3 банки за 1 198 грн" : "Замовити 1 банку за 599 грн";
+        document.getElementById("stickyPrice").textContent = pack === "promo" ? "1 198 грн" : "599 грн";
+        document.getElementById("stickyKicker").textContent = pack === "promo" ? "1+1=3" : "1 банка";
       };
     });
 

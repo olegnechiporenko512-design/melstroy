@@ -391,9 +391,9 @@ function Offer({ left }: { left: number }) {
             <p className="border-x border-border px-2 py-3">Дні</p>
             <p className="px-2 py-3">Ціна</p>
           </div>
-          <OfferRow label="1 банка" days="30" price="890 грн" />
-          <OfferRow label="3 банки" days="90" price="2 670 грн" muted />
-          <OfferRow label="Акція 1+1=3" days="90" price="1 780 грн" highlight />
+          <OfferRow label="1 банка" days="30" price="599 грн" />
+          <OfferRow label="3 банки" days="90" price="1 797 грн" muted />
+          <OfferRow label="Акція 1+1=3" days="90" price="1 198 грн" highlight />
         </div>
         <div className="mt-6 flex justify-center">
           <Button className="min-w-60" onClick={scrollToOrder}>

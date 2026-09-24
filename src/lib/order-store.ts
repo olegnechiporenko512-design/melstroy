@@ -13,7 +13,7 @@ type OrderState = {
 };
 
 export const useOrder = create<OrderState>((set) => ({
-  pack: "promo",
+  pack: "one",
   setPack: (pack) => set({ pack }),
   status: "idle",
   setStatus: (status) => set({ status }),

@@ -13,7 +13,9 @@ export function StickyBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-bg/92 px-3 pt-2.5 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
       <div className="mx-auto flex max-w-lg items-center gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold tracking-label text-primary uppercase">1+1=3</p>
+          <p className="text-xs font-semibold tracking-label text-primary uppercase">
+            {pack === "promo" ? "1+1=3" : "1 банка"}
+          </p>
           <p className="truncate text-sm font-semibold tabular-nums text-fg">
             {chosen.price} грн
             {chosen.oldPrice ? (
