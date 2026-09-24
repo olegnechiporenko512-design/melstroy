@@ -204,9 +204,9 @@ export function OrderForm({ id = "order", compact = false }: Props) {
             Надсилаємо
           </>
         ) : pack === "promo" ? (
-          "Замовити 3 банки за 1 780 грн"
+          "Замовити 3 банки за 1 198 грн"
         ) : (
-          "Замовити 1 банку за 890 грн"
+          "Замовити 1 банку за 599 грн"
         )}
       </Button>
       <p className="mt-3 text-center text-[11px] leading-relaxed text-subtle">
