@@ -2,4 +2,4 @@
 export const SITE_URL = "https://www.prosto-ta.click";
 
 /** Facebook Pixel — Events Manager. */
-export const META_PIXEL_ID = "1654932402424423";
+export const META_PIXEL_ID = "3557729764386334";

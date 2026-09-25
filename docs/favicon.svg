@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Welstroy Energy">
-  <rect width="32" height="32" rx="7" fill="#120C09"/>
-  <path fill="#D4A257" d="M16 5.2c0 0-7.4 10.2-7.4 15.1a7.4 7.4 0 0 0 14.8 0C23.4 15.4 16 5.2 16 5.2z"/>
-  <path fill="#F4EAD8" opacity=".42" d="M13.1 16.2c0-2.2 1.1-5.4 1.8-7.2.2.6 1.4 3.6 1.4 6.4 0 2.2-1.4 3.6-3.2 3.6-.1-1-.01-1.9 0-2.8z"/>
-  <circle cx="16" cy="21.4" r="2.15" fill="#B4232C"/>
-</svg>
