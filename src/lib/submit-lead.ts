@@ -34,7 +34,13 @@ export async function submitLead(input: LeadInput) {
     }),
   });
 
-  if (!res.ok) {
+  let data: { success?: boolean } | null = null;
+  try {
+    data = (await res.json()) as { success?: boolean };
+  } catch {
+    data = null;
+  }
+  if (!res.ok || data?.success !== true) {
     throw new Error("Не вдалося надіслати заявку. Спробуйте ще раз.");
   }
 

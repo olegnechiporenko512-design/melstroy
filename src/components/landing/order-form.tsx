@@ -7,6 +7,7 @@ import { PACKS, type PackId } from "@/lib/product";
 import { captureAttribution, useOrder } from "@/lib/order-store";
 import { formatUaPhone, isValidUaPhone } from "@/lib/phone";
 import { submitLead } from "@/lib/submit-lead";
+import { trackOrder } from "@/lib/meta-pixel";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -61,14 +62,14 @@ export function OrderForm({ id = "order", compact = false }: Props) {
     setStatus("submitting");
     setError(null);
     try {
-      await submitLead({
+      const result = await submitLead({
         name,
         phone,
         pack,
         ...captureAttribution(),
       });
-      window.fbq?.("track", "Lead");
       setStatus("success");
+      trackOrder(result.price);
     } catch {
       setStatus("error");
       setError("Не вдалося надіслати. Перевірте мережу і спробуйте ще раз.");
@@ -214,10 +215,4 @@ export function OrderForm({ id = "order", compact = false }: Props) {
       </p>
     </form>
   );
-}
-
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
 }

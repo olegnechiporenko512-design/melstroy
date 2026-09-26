@@ -3,6 +3,7 @@ import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { MetaPixel } from "@/components/meta-pixel";
 import { SITE_URL } from "@/lib/leads-config";
+import { PIXEL_ID, metaPixelSnippet } from "@/lib/meta-pixel";
 import appCss from "../styles.css?url";
 
 const APP_NAME = "Welstroy Energy";
@@ -56,6 +57,9 @@ function RootDocument() {
       <head>
         <HeadContent />
         <script defer src="/_vercel/insights/script.js" />
+        {PIXEL_ID ? (
+          <script dangerouslySetInnerHTML={{ __html: metaPixelSnippet() }} />
+        ) : null}
       </head>
       <body>
         <PreviewHostBridge />
