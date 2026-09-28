@@ -1,5 +1,5 @@
 import { PACKS, type PackId } from "@/lib/product";
-import { isValidUaPhone, toE164 } from "@/lib/phone";
+import { isValidUaPhone, nationalDigits } from "@/lib/phone";
 import type { LeadAttribution } from "@/lib/order-store";
 
 export type LeadInput = {
@@ -23,7 +23,7 @@ export async function submitLead(input: LeadInput) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name,
-      phone: toE164(input.phone),
+      phone: `380${nationalDigits(input.phone)}`,
       pack,
       utm_source: input.utm_source,
       utm_medium: input.utm_medium,

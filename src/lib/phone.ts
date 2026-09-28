@@ -5,9 +5,12 @@ export function digitsOnly(value: string): string {
 
 export function nationalDigits(value: string): string {
   let d = digitsOnly(value);
-  if (d.startsWith("380")) d = d.slice(3);
-  else if (d.startsWith("80")) d = d.slice(2);
-  else if (d.startsWith("0")) d = d.slice(1);
+  // 067…, 80…, 380…, +380… — and the same prefix typed again after the field's +380.
+  while (d.startsWith("380") || d.startsWith("80") || d.startsWith("0")) {
+    if (d.startsWith("380")) d = d.slice(3);
+    else if (d.startsWith("80")) d = d.slice(2);
+    else d = d.slice(1);
+  }
   return d.slice(0, 9);
 }
 
@@ -27,8 +30,4 @@ export function formatUaPhone(value: string): string {
 
 export function isValidUaPhone(value: string): boolean {
   return nationalDigits(value).length === 9;
-}
-
-export function toE164(value: string): string {
-  return `+380${nationalDigits(value)}`;
 }
