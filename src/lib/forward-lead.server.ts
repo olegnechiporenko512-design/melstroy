@@ -12,6 +12,11 @@ export type LeadRequest = {
   utm_content?: unknown;
   utm_term?: unknown;
   fbclid?: unknown;
+  page?: unknown;
+  variant?: unknown;
+  total?: unknown;
+  fbp?: unknown;
+  fbc?: unknown;
 };
 
 const ATTR = [
@@ -60,8 +65,13 @@ export function buildSheetPayload(input: LeadRequest, ip: string) {
     pack === "promo"
       ? `Акція 1+1=3 - ${chosen.price} грн`
       : `1 банка - ${chosen.price} грн`;
+  const variantSent = clip(input.variant, 200);
+  const totalRaw = Number(input.total);
+  if (!variantSent || variantSent !== variant) throw new Error("bad_variant");
+  if (!Number.isFinite(totalRaw) || Math.round(totalRaw) !== chosen.price) throw new Error("bad_total");
 
   const payload: Record<string, string | number> = {
+    page: clip(input.page, 500),
     name,
     phone: "380" + nationalDigits(phoneRaw),
     quantity: chosen.jars,

@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DyakuiemoRouteImport } from './routes/dyakuiemo'
 import { Route as ApiLeadRouteImport } from './routes/api/lead'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DyakuiemoRoute = DyakuiemoRouteImport.update({
+  id: '/dyakuiemo',
+  path: '/dyakuiemo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiLeadRoute = ApiLeadRouteImport.update({
@@ -25,27 +31,31 @@ const ApiLeadRoute = ApiLeadRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dyakuiemo': typeof DyakuiemoRoute
   '/api/lead': typeof ApiLeadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dyakuiemo': typeof DyakuiemoRoute
   '/api/lead': typeof ApiLeadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dyakuiemo': typeof DyakuiemoRoute
   '/api/lead': typeof ApiLeadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/lead'
+  fullPaths: '/' | '/dyakuiemo' | '/api/lead'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/lead'
-  id: '__root__' | '/' | '/api/lead'
+  to: '/' | '/dyakuiemo' | '/api/lead'
+  id: '__root__' | '/' | '/dyakuiemo' | '/api/lead'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DyakuiemoRoute: typeof DyakuiemoRoute
   ApiLeadRoute: typeof ApiLeadRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dyakuiemo': {
+      id: '/dyakuiemo'
+      path: '/dyakuiemo'
+      fullPath: '/dyakuiemo'
+      preLoaderRoute: typeof DyakuiemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/lead': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DyakuiemoRoute: DyakuiemoRoute,
   ApiLeadRoute: ApiLeadRoute,
 }
 export const routeTree = rootRouteImport

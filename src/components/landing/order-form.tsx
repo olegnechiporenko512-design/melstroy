@@ -7,7 +7,6 @@ import { PACKS, type PackId } from "@/lib/product";
 import { captureAttribution, useOrder } from "@/lib/order-store";
 import { formatUaPhone, isValidUaPhone } from "@/lib/phone";
 import { submitLead } from "@/lib/submit-lead";
-import { trackOrder } from "@/lib/meta-pixel";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -68,11 +67,28 @@ export function OrderForm({ id = "order", compact = false }: Props) {
         pack,
         ...captureAttribution(),
       });
-      setStatus("success");
-      trackOrder(result.price);
+      if (result.orderId) {
+        try {
+          sessionStorage.setItem(
+            "dyakuiemo_order",
+            JSON.stringify({
+              order_id: result.orderId,
+              name: name.trim().replace(/\s+/g, " "),
+              phone: result.phone,
+              variant: result.variant,
+              quantity: result.quantity,
+              total: result.price,
+              product: "Welstroy Energy",
+            }),
+          );
+        } catch {
+          /* storage blocked */
+        }
+      }
+      window.location.assign("/dyakuiemo");
     } catch {
       setStatus("error");
-      setError("Не вдалося надіслати. Перевірте мережу і спробуйте ще раз.");
+      setError("Не вдалося відправити, спробуйте ще раз");
     }
   }
 

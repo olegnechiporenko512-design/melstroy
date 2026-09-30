@@ -4,7 +4,7 @@ export const PIXEL_ID = META_PIXEL_ID.replace(/\D/g, "");
 
 /** Base code. autoConfig is disabled before init so Meta does not invent extra events. */
 export function metaPixelSnippet(id = PIXEL_ID) {
-  return `!function(w){if(w.__metaPixel)return;w.__metaPixel=1;var f=w,b=document,e="script",v="https://connect.facebook.net/en_US/fbevents.js",n,t,s;if(!f.fbq){n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];if(s&&s.parentNode)s.parentNode.insertBefore(t,s);else(b.head||b.documentElement).appendChild(t)}f.fbq("set","autoConfig",false,"${id}");f.fbq("init","${id}");f.fbq("track","PageView")}(window);`;
+  return `!function(w){if(w.__metaPixel)return;w.__metaPixel=1;var f=w,b=document,e="script",v="https://connect.facebook.net/en_US/fbevents.js",n,t,s;if(!f.fbq){n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];if(s&&s.parentNode)s.parentNode.insertBefore(t,s);else(b.head||b.documentElement).appendChild(t)}if(location.pathname!=="/dyakuiemo"){f.fbq("set","autoConfig",false,"${id}");f.fbq("init","${id}");f.fbq("track","PageView")}}(window);`;
 }
 
 export function trackOrder(value: number) {
